@@ -30,7 +30,7 @@ export interface NetStatEntry extends StatEntry {
   send   : number;
 }
 
-export interface DiskStatEntry extends StatEntry {
+export interface DiscStatEntry extends StatEntry {
   file    : string;
   priority: string;
   read    : number;
@@ -38,12 +38,29 @@ export interface DiskStatEntry extends StatEntry {
   write   : number;
 }
 
-export interface DeviceStats {
-  cpu : Array<CPUStatEntry>;
-  ram : Array<RAMStatEntry>;
-  net : Array<NetStatEntry>;
-  disc: Array<DiskStatEntry>;
+export interface CPUStat {
+  total: number;
+  entries: Array<CPUStatEntry>;
 }
+export interface RAMStat {
+  total: number;
+  entries: Array<RAMStatEntry>;
+}
+export interface NetStat {
+  entries: Array<NetStatEntry>;
+}
+export interface DiscStat {
+  avarageSpeed: number;
+  avarageSpeedDimensions: string;
+  entries: Array<DiscStatEntry>;
+}
+
+export interface DeviceStats {
+  cpu : CPUStat;
+  ram : RAMStat;
+  net : NetStat;
+  disc: DiscStat
+};
 
 export interface Device {
   id       : number;

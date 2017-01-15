@@ -1,3 +1,68 @@
-<ion-content padding>
+<ion-content>
+
+  <ion-segment [(ngModel)]="detailedView" color="primary">
+    <ion-segment-button value="off">Summary</ion-segment-button>
+    <ion-segment-button value="on">Detailed</ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="detailedView">
+
+    <ion-row *ngSwitchCase="'on'" padding center>
+      <ion-col width-33>
+        <div class="stat-types">
+          <p ion-text color="primary">Image</p>
+          <p ion-text color="primary">Description</p>
+          <p ion-text color="primary">Version</p>
+          <p ion-text color="primary">Pid</p>
+          <p ion-text color="primary">Average</p>
+          <p ion-text color="primary">Cpu</p>
+          <p ion-text color="primary">Cycle</p>
+          <p ion-text color="primary">Elevated</p>
+          <p ion-text color="primary">Status</p>
+        </div>
+      </ion-col>
+      <ion-col width-67>
+        <ion-slides pager="true">
+          <ion-slide *ngFor="let statEntry of stats.entries">
+            <p>{{ statEntry.image }}</p>
+            <p>{{ statEntry.description }}</p>
+            <p>{{ statEntry.version }}</p>
+            <p>{{ statEntry.pid }}</p>
+            <p>{{ statEntry.average }}</p>
+            <p>{{ statEntry.cpu }}</p>
+            <p>{{ statEntry.cycle }}</p>
+            <p>{{ statEntry.elevated }}</p>
+            <p>{{ statEntry.status }}</p>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+
+    <ion-grid *ngSwitchCase="'off'" padding center class="summary-view">
+      <ion-row>
+        <ion-col width-50>
+          Image
+        </ion-col>
+        <ion-col width-25>
+          PID
+        </ion-col>
+        <ion-col width-25>
+          CPU
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let stat of stats.entries">
+        <ion-col width-50>
+          {{ stat.image }}
+        </ion-col>
+        <ion-col width-25>
+          {{ stat.pid }}
+        </ion-col>
+        <ion-col width-25>
+          {{ stat.cpu }}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
 
 </ion-content>

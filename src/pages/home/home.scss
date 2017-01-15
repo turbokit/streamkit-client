@@ -1,3 +1,18 @@
 page-home {
+  .ion-range-wrapper {
+    padding: 0px;
 
+    .range-md {
+      padding: 0 8px;
+
+      .range-bar {
+        background: none;
+      }
+
+    }
+
+    .range-md.range-disabled .range-bar-active {
+      background-color: color($colors, primary);
+    }
+  }
 }

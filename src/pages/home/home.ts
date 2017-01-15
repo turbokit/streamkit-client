@@ -17,6 +17,10 @@ export class HomePage {
 
   constructor(private deviceService: DeviceService, public navCtrl: NavController) {
     this.devices = this.deviceService.getDevices();
+
+    this.deviceService
+      .getDevices()
+      .subscribe(data => console.log(data));
   }
 
   public open(device: any) {

@@ -1,22 +1,21 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-/*
-  Generated class for the Cpu page.
+import { CPUStat } from '../../../providers/device-service';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-cpu',
   templateUrl: 'cpu.html'
 })
 export class CpuPage {
+  public stats: CPUStat;
+  public statLabels: Array<string>;
+  public detailedView: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CpuPage');
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.detailedView = 'off';
+    this.stats = this.navParams.data;
+    this.statLabels = Object.keys(this.stats.entries.pop())
   }
 
 }
