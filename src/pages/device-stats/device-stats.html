@@ -1,14 +1,39 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Device: {{ device.id }} Load: {{ device.load }}</ion-title>
+    <ion-title>Device: {{ device.id }} | Load: {{ device.load }}</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
   <ion-tabs>
-    <ion-tab tabIcon="construct" tabTitle="Summary" [root]="summary"></ion-tab>
-    <ion-tab tabIcon="clock" tabTitle="CPU" [root]="cpu"></ion-tab>
-    <ion-tab tabIcon="cog" tabTitle="RAM" [root]="ram"></ion-tab>
-    <ion-tab tabIcon="disc" tabTitle="Disc" [root]="disc"></ion-tab>
-    <ion-tab tabIcon="globe" tabTitle="Network" [root]="network"></ion-tab>
+    <ion-tab
+      [root]="summary"
+      [rootParams]="device.stats"
+      tabIcon="construct"
+      tabTitle="Summary">
+    </ion-tab>
+    <ion-tab
+      [root]="cpu"
+      [rootParams]="device.stats.cpu"
+      tabIcon="clock"
+      tabTitle="CPU">
+    </ion-tab>
+    <ion-tab
+      [root]="ram"
+      [rootParams]="device.stats.ram"
+      tabIcon="cog"
+      tabTitle="RAM">
+    </ion-tab>
+    <ion-tab
+      [root]="disc"
+      [rootParams]="device.stats.disc"
+      tabIcon="disc"
+      tabTitle="Disc">
+    </ion-tab>
+    <ion-tab
+      [root]="network"
+      [rootParams]="device.stats.net"
+      tabIcon="globe"
+      tabTitle="Network">
+    </ion-tab>
   </ion-tabs>
 </ion-content>

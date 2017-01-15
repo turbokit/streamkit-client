@@ -4,14 +4,14 @@ import { NavController, NavParams } from 'ionic-angular';
 import { SummaryPage } from './summary/summary';
 import { CpuPage } from './cpu/cpu';
 import { RamPage } from './ram/ram';
-import { DiskPage } from './disk/disk';
+import { DiscPage } from './disc/disc';
 import { NetworkPage } from './network/network';
 
 export const DeviceStatsComponents = [
   SummaryPage,
   CpuPage,
   RamPage,
-  DiskPage,
+  DiscPage,
   NetworkPage
 ];
 
@@ -25,7 +25,7 @@ export class DeviceStatsPage {
   public summary: any;
   public cpu: any;
   public ram: any;
-  public disk: any;
+  public disc: any;
   public network: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -34,7 +34,7 @@ export class DeviceStatsPage {
     this.summary = SummaryPage;
     this.cpu = CpuPage;
     this.ram = RamPage;
-    this.disk = DiskPage;
+    this.disc = DiscPage;
     this.network = NetworkPage;
   }
 

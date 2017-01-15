@@ -8,10 +8,10 @@ import { NavController, NavParams } from 'ionic-angular';
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-disk',
-  templateUrl: 'disk.html'
+  selector: 'page-disc',
+  templateUrl: 'disc.html'
 })
-export class DiskPage {
+export class DiscPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
