@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Device: {{ device.id }} Load: {{ device.load }}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-tabs>
+    <ion-tab tabIcon="construct" tabTitle="Summary" [root]="summary"></ion-tab>
+    <ion-tab tabIcon="clock" tabTitle="CPU" [root]="cpu"></ion-tab>
+    <ion-tab tabIcon="cog" tabTitle="RAM" [root]="ram"></ion-tab>
+    <ion-tab tabIcon="disc" tabTitle="Disc" [root]="disc"></ion-tab>
+    <ion-tab tabIcon="globe" tabTitle="Network" [root]="network"></ion-tab>
+  </ion-tabs>
+</ion-content>
