@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { CPUStat } from '../../../providers/device-service';
@@ -7,29 +7,23 @@ import { CPUStat } from '../../../providers/device-service';
   selector: 'page-cpu',
   templateUrl: 'cpu.html'
 })
-export class CpuPage {
+export class CpuPage implements OnInit {
   public stats: CPUStat;
-  public statLabels: Array<string>;
   public summaryViewLabels: Array<string>;
-  public detailedView: string;
-  public load: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.detailedView = 'off';
-    this.stats = this.navParams.data;
-    this.statLabels = Object.keys(this.stats.entries.pop());
+  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+
+  ngOnInit() {
     this.summaryViewLabels = ['image', 'pid', 'cpu'];
-
+    this.stats = this.navParams.data;
   }
 
-  public getTotalCpu() {
-    return function() {
-      let entriesCpuTotal: number = 0;
-      for (let i = 0; i < this.stats.entries.length; i++) {
-        entriesCpuTotal += this.stats.entries[i].cpu;
-      }
-      return +(entriesCpuTotal * 100 / this.stats.total).toFixed(2);
-    }
+  getLoadingValue(): number {
+    let entriesTotal: number = 0;
+
+    this.stats.entries.forEach(statEntry => entriesTotal += statEntry.cpu);
+
+    return +(entriesTotal * 100 / this.stats.total).toFixed(2);
   }
 
 }

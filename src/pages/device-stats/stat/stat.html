@@ -1,8 +1,20 @@
 <ion-content>
 
   <ion-item color="light" text-center>
-    <span ion-text item-left color="primary">Total: {{ stats.total }}</span>
-    <span ion-text item-right color="secondary">Load: {{ load }} %</span>
+    <span
+      *ngIf="stats.total != null"
+      ion-text
+      item-left
+      color="primary">
+      Total: {{ stats.total }}
+    </span>
+    <span
+      *ngIf="lodingProperty != null"
+      ion-text
+      item-right
+      color="secondary">
+      Load: {{ lodingProperty }}{{ lodingPropertyDimensions }}
+    </span>
   </ion-item>
 
   <ion-segment [(ngModel)]="detailedView" color="primary">
@@ -25,7 +37,7 @@
       <ion-col width-67>
         <ion-slides pager="true">
           <ion-slide *ngFor="let statEntry of stats.entries">
-            <p *ngFor="let statLabel of statLabels">
+            <p *ngFor="let statLabel of statLabels" ion-text text-nowrap>
               {{ statEntry[statLabel] }}
             </p>
           </ion-slide>
@@ -33,7 +45,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-grid *ngSwitchCase="'off'" padding center class="summary-view">
+    <ion-grid *ngSwitchCase="'off'" center class="summary-view">
       <ion-row>
         <ion-col width-50>
           {{ summaryViewLabels[0] }}

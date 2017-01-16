@@ -30,7 +30,7 @@ export interface NetStatEntry extends StatEntry {
   send   : number;
 }
 
-export interface DiscStatEntry extends StatEntry {
+export interface DiskStatEntry extends StatEntry {
   file    : string;
   priority: string;
   read    : number;
@@ -49,17 +49,17 @@ export interface RAMStat {
 export interface NetStat {
   entries: Array<NetStatEntry>;
 }
-export interface DiscStat {
-  avarageSpeed: number;
-  avarageSpeedDimensions: string;
-  entries: Array<DiscStatEntry>;
+export interface DiskStat {
+  averageSpeed: number;
+  averageSpeedDimensions: string;
+  entries: Array<DiskStatEntry>;
 }
 
 export interface DeviceStats {
   cpu : CPUStat;
   ram : RAMStat;
   net : NetStat;
-  disc: DiscStat
+  disk: DiskStat
 };
 
 export interface Device {
@@ -78,7 +78,7 @@ export class DeviceService {
 
   public getDevices(): Observable<Devices> {
     return this.http
-      .get('https://gist.githubusercontent.com/embarq/573ecfd8b3fb2c3679b4eb8f9a577889/raw/cdd80c6118706344cada156611588b51932b2a75/devices.mock.json')
+      .get('https://gist.githubusercontent.com/embarq/573ecfd8b3fb2c3679b4eb8f9a577889/raw/7e2ee9ff1d5334a81ae5525043d72af8acd2cecc/devices.mock.json')
       .map((res: Response) => res.json())
   }
 

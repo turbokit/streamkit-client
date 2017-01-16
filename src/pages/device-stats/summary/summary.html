@@ -1,3 +1,49 @@
-<ion-content padding>
+<ion-content>
+  <ion-list>
+    <ion-item-group *ngFor="let statLabel of statLabels">
+      <ion-item-divider text-center color="primary">{{ statLabel }}</ion-item-divider>
 
+      <ion-item class="no-left-padding" color="light">
+        <ion-row>
+          <ion-col width-50>
+            <ion-item text-wrap color="light">
+              {{ summaryStatsViewLabels[statLabel][0] }}
+            </ion-item>
+          </ion-col>
+          <ion-col width-25>
+            <ion-item text-wrap color="light">
+              {{ summaryStatsViewLabels[statLabel][1] }}
+            </ion-item>
+          </ion-col>
+          <ion-col width-25>
+            <ion-item text-wrap color="light">
+              {{ summaryStatsViewLabels[statLabel][2] }}
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item
+        *ngFor="let stat of stats[statLabel].entries"
+        class="no-left-padding">
+        <ion-row>
+          <ion-col width-50>
+            <ion-item text-wrap>
+              {{ stat[summaryStatsViewLabels[statLabel][0]] }}
+            </ion-item>
+          </ion-col>
+          <ion-col width-25>
+            <ion-item text-wrap>
+              {{ stat[summaryStatsViewLabels[statLabel][1]] }}
+            </ion-item>
+          </ion-col>
+          <ion-col width-25>
+            <ion-item text-wrap>
+              {{ stat[summaryStatsViewLabels[statLabel][2]] }}
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
 </ion-content>

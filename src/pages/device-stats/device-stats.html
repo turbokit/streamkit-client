@@ -8,39 +8,35 @@
     <ion-tab
       [root]="summary"
       [rootParams]="device.stats"
-      [tabBadge]="
-        device.stats.cpu.entries.length +
-        device.stats.ram.entries.length +
-        device.stats.disk.entries.length +
-        device.stats.net.entries.length"
+      [tabBadge]="tasks.summary"
       tabIcon="construct"
       tabTitle="Summary">
     </ion-tab>
     <ion-tab
       [root]="cpu"
       [rootParams]="device.stats.cpu"
-      [tabBadge]="device.stats.cpu.entries.length"
+      [tabBadge]="tasks.cpu"
       tabIcon="clock"
       tabTitle="CPU">
     </ion-tab>
     <ion-tab
       [root]="ram"
       [rootParams]="device.stats.ram"
-      [tabBadge]="device.stats.ram.entries.length"
+      [tabBadge]="tasks.ram"
       tabIcon="cog"
       tabTitle="RAM">
     </ion-tab>
     <ion-tab
-      [root]="disc"
-      [rootParams]="device.stats.disc"
-      [tabBadge]="device.stats.disk.entries.length"
+      [root]="disk"
+      [rootParams]="device.stats.disk"
+      [tabBadge]="tasks.disk"
       tabIcon="disc"
       tabTitle="Disc">
     </ion-tab>
     <ion-tab
       [root]="network"
       [rootParams]="device.stats.net"
-      [tabBadge]="device.stats.net.entries.length"
+      [tabBadge]="tasks.net"
       tabIcon="globe"
       tabTitle="Network">
     </ion-tab>
