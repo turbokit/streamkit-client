@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "streamkit-client",
+  "author": "embarq",
+  "homepage": "https://github.com/embarq/streamkit-client#readme",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -40,5 +40,5 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "streamkit: An Ionic project"
+  "description": "StreamKit: An Ionic project"
 }
