@@ -1,5 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { ChartModule } from 'angular2-highcharts';
+import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -7,17 +9,35 @@ import { DeviceStatsPage, DeviceStatsComponents } from '../pages/device-stats/de
 
 import { DeviceService } from '../providers/device-service';
 
+import { TitleCasePipe } from '../pipes/title-case';
+
+export function highchartsStaticFactory() {
+  return require('highcharts');
+}
+
+export const HighchartsStaticProvider = {
+  provide: HighchartsStatic,
+  useFactory: highchartsStaticFactory
+};
+
+export const IonicErrorHandlerProvider = {
+  provide: ErrorHandler,
+  useClass: IonicErrorHandler
+}
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     DeviceStatsPage,
-    DeviceStatsComponents
+    DeviceStatsComponents,
+    TitleCasePipe
   ],
   imports: [
+    ChartModule,
     IonicModule.forRoot(MyApp, {
       tabsPlacement: 'top'
-    })
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -26,6 +46,10 @@ import { DeviceService } from '../providers/device-service';
     DeviceStatsPage,
     DeviceStatsComponents
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, DeviceService]
+  providers: [
+    DeviceService,
+    IonicErrorHandlerProvider,
+    HighchartsStaticProvider
+  ]
 })
 export class AppModule {}
