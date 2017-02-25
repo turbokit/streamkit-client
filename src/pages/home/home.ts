@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { DeviceStatsPage } from '../device-stats/device-stats';
@@ -12,19 +11,14 @@ import {
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
   public devices: Observable<Devices>;
+  public deviceStatsPage: Component;
 
-  constructor(private deviceService: DeviceService, public navCtrl: NavController) {
+  constructor(private deviceService: DeviceService) { }
+
+  public ngOnInit() {
+    this.deviceStatsPage = DeviceStatsPage;
     this.devices = this.deviceService.getDevices();
-
-    this.deviceService
-      .getDevices()
-      .subscribe(data => console.log(data));
   }
-
-  public open(device: any) {
-    this.navCtrl.push(DeviceStatsPage, device);
-  }
-
 }

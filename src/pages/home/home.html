@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar color="red">
     <ion-title>
       Streamkit Devices
     </ion-title>
@@ -7,14 +7,17 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let device of devices | async" (click)="open(device)">
+  <ion-card
+    *ngFor="let device of devices | async"
+    [navPush]="deviceStatsPage"
+    [navParams]="{ device }">
     <ion-card-content>
-      <h2>Device: {{ device.id }}</h2>
-      <p>Task Group: {{ device.taskGroup }}</p>
+      <h2 ion-text color="light">Device: <span ion-text color="red">{{ device.id }}</span></h2>
+      <p ion-text color="light">Task Group: <span ion-text color="red">{{ device.taskGroup }}</span></p>
 
       <ion-row center>
         <ion-col width-20>
-          <h2>Load</h2>
+          <h2 ion-text color="light">Load</h2>
         </ion-col>
         <ion-col width-80 class="ion-range-wrapper">
           <ion-range [ngModel]="device.load" disabled>
