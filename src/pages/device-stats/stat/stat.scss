@@ -14,12 +14,21 @@ device-stat {
     text-align: left;
   }
 
+  .swiper-pagination-bullet-active {
+    background-color: color($colors, red);
+  }
+
+  .swiper-pagination-fraction,
+  .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: -3px;
+  }
+
   .summary-view {
     padding-top: 0;
 
     ion-row:first-child {
       background-color: color($colors, light);
-      color: color($colors, primary);
+      color: color($colors, red);
     }
 
     ion-row + ion-row {

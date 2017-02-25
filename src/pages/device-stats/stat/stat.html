@@ -1,23 +1,29 @@
 <ion-content>
 
-  <ion-item color="light" text-center>
+  <ion-item color="red">
     <span
       *ngIf="stats.total != null"
       ion-text
       item-left
-      color="primary">
+      color="light">
       Total: {{ stats.total }}
     </span>
-    <span
+    <strong
       *ngIf="lodingProperty != null"
       ion-text
       item-right
-      color="secondary">
+      color="light">
       Load: {{ lodingProperty }}{{ lodingPropertyDimensions }}
-    </span>
+    </strong>
   </ion-item>
 
-  <ion-segment [(ngModel)]="detailedView" color="primary">
+  <!-- <chart
+    [options]="options"
+    (load)="bindChartInstance($event.context)"
+    style="display: block">
+  </chart> -->
+
+  <ion-segment [(ngModel)]="detailedView" color="red">
     <ion-segment-button value="off">Summary</ion-segment-button>
     <ion-segment-button value="on">Detailed</ion-segment-button>
   </ion-segment>
@@ -29,7 +35,7 @@
         <div class="stat-types">
           <p *ngFor="let statLabel of statLabels"
             ion-text
-            color="primary">
+            color="red">
             {{ statLabel }}
           </p>
         </div>
