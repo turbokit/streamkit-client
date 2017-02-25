@@ -1,4 +1,21 @@
 page-home {
+  .content {
+    background-color: color($colors, dark);
+    background-image: url('../assets/main-backgound.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .text-md-red {
+    font-weight: 500;
+  }
+
+  .card {
+    background-color: rgba(color($colors, dark), 0.7);
+    border-radius: 6px;
+  }
+
   .ion-range-wrapper {
     padding: 0px;
 
@@ -11,8 +28,14 @@ page-home {
 
     }
 
+    .range-md.range-disabled .range-knob {
+      outline: none;
+      background-color: color($colors, red);
+      transform: scale(0.7);
+    }
+
     .range-md.range-disabled .range-bar-active {
-      background-color: color($colors, primary);
+      background-color: color($colors, red);
     }
   }
 }
