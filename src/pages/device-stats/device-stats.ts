@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Device } from '../../providers/device-service';
+import { Observable } from 'rxjs';
+
+import { Device, DeviceService } from '../../providers/device-service';
 
 import { CpuPage } from './cpu/cpu';
 import { DiskPage } from './disk/disk';
@@ -23,7 +25,7 @@ export const DeviceStatsComponents = [
   selector: 'page-device-stats',
   templateUrl: 'device-stats.html'
 })
-export class DeviceStatsPage {
+export class DeviceStatsPage implements OnInit {
   public device: Device;
   public tasks: any;
 
@@ -33,8 +35,23 @@ export class DeviceStatsPage {
   public disk: any;
   public network: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.device = this.navParams.data;
+  constructor(
+    public deviceService: DeviceService,
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ) {
+    this.summary = SummaryPage;
+    this.cpu = CpuPage;
+    this.ram = RamPage;
+    this.disk = DiskPage;
+    this.network = NetworkPage;
+
+    this.tasks = null;
+    this.device = null;
+  }
+
+  public ngOnInit() {
+    this.device = this.navParams.get('device');
 
     let { cpu, ram, disk, net } = this.device.stats;
 
@@ -50,12 +67,6 @@ export class DeviceStatsPage {
       disk: disk.entries.length - 1,
       net: net.entries.length - 1
     }
-
-    this.summary = SummaryPage;
-    this.cpu = CpuPage;
-    this.ram = RamPage;
-    this.disk = DiskPage;
-    this.network = NetworkPage;
   }
 
 }

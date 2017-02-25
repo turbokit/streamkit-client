@@ -1,42 +1,44 @@
 <ion-header>
-  <ion-navbar color="primary">
-    <ion-title>Device: {{ device.id }} | Load: {{ device.load }}</ion-title>
+  <ion-navbar color="red">
+    <ion-title>
+      Device: {{ device?.id }} | Load: {{ device?.load }}
+      </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-tabs>
+  <ion-tabs selectedIndex="1" color="dark">
     <ion-tab
       [root]="summary"
-      [rootParams]="device.stats"
-      [tabBadge]="tasks.summary"
+      [rootParams]="device?.stats"
+      [tabBadge]="tasks?.summary"
       tabIcon="construct"
       tabTitle="Summary">
     </ion-tab>
     <ion-tab
       [root]="cpu"
-      [rootParams]="device.stats.cpu"
-      [tabBadge]="tasks.cpu"
+      [rootParams]="device?.stats.cpu"
+      [tabBadge]="tasks?.cpu"
       tabIcon="clock"
       tabTitle="CPU">
     </ion-tab>
     <ion-tab
       [root]="ram"
-      [rootParams]="device.stats.ram"
-      [tabBadge]="tasks.ram"
+      [rootParams]="device?.stats.ram"
+      [tabBadge]="tasks?.ram"
       tabIcon="cog"
       tabTitle="RAM">
     </ion-tab>
     <ion-tab
       [root]="disk"
-      [rootParams]="device.stats.disk"
-      [tabBadge]="tasks.disk"
+      [rootParams]="device?.stats.disk"
+      [tabBadge]="tasks?.disk"
       tabIcon="disc"
       tabTitle="Disc">
     </ion-tab>
     <ion-tab
       [root]="network"
-      [rootParams]="device.stats.net"
-      [tabBadge]="tasks.net"
+      [rootParams]="device?.stats.net"
+      [tabBadge]="tasks?.net"
       tabIcon="globe"
       tabTitle="Network">
     </ion-tab>
