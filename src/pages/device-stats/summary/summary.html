@@ -1,23 +1,31 @@
 <ion-content>
   <ion-list>
     <ion-item-group *ngFor="let statLabel of statLabels">
-      <ion-item-divider text-center color="primary">{{ statLabel }}</ion-item-divider>
+      <ion-item-divider color="red" text-center text-uppercase>
+        {{ statLabel }}
+      </ion-item-divider>
 
       <ion-item class="no-left-padding" color="light">
         <ion-row>
           <ion-col width-50>
-            <ion-item text-wrap color="light">
-              {{ summaryStatsViewLabels[statLabel][0] }}
+            <ion-item text-wrap>
+              <strong color="red" ion-text text-uppercase>
+                {{ summaryStatsViewLabels[statLabel][0] }}
+              </strong>
             </ion-item>
           </ion-col>
           <ion-col width-25>
-            <ion-item text-wrap color="light">
-              {{ summaryStatsViewLabels[statLabel][1] }}
+            <ion-item text-wrap>
+              <strong color="red" ion-text text-uppercase>
+                {{ summaryStatsViewLabels[statLabel][1] }}
+              </strong>
             </ion-item>
           </ion-col>
           <ion-col width-25>
-            <ion-item text-wrap color="light">
-              {{ summaryStatsViewLabels[statLabel][2] }}
+            <ion-item text-wrap>
+              <strong color="red" ion-text text-uppercase>
+                {{ summaryStatsViewLabels[statLabel][2] }}
+              </strong>
             </ion-item>
           </ion-col>
         </ion-row>
