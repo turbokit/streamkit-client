@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Observable } from 'rxjs';
-
 import { Device, DeviceService } from '../../providers/device-service';
 
 import { CpuPage } from './cpu/cpu';
@@ -54,6 +52,8 @@ export class DeviceStatsPage implements OnInit {
     this.device = this.navParams.get('device');
 
     let { cpu, ram, disk, net } = this.device.stats;
+
+    console.log(this.device.stats);
 
     this.tasks = {
       summary: [
