@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { refreshRate } from '../../../providers/device-service';
@@ -7,7 +7,7 @@ import { refreshRate } from '../../../providers/device-service';
   selector: 'device-stat',
   templateUrl: 'stat.html'
 })
-export class StatComponent implements OnInit {
+export class StatComponent implements OnInit, OnDestroy {
   @Input() public stats: any;
   @Input() public chartDataField: string;
   @Input() public summaryViewLabels: Array<string>;
@@ -19,9 +19,14 @@ export class StatComponent implements OnInit {
 
   public chartInstance: any;
   public chartOptions: any;
+  public updatingTimer: any;
   public series: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public zone: NgZone
+  ) { }
 
   public ngOnInit() {
     this.statLabels = Object.keys(this.stats.entries.pop());
@@ -55,9 +60,15 @@ export class StatComponent implements OnInit {
       }))
     }
 
-    setInterval(
-      () => this.updateSeries(this.chartInstance.series),
+    this.updatingTimer = setInterval(
+      () => this.zone.run(() => this.updateSeries(this.chartInstance.series)),
       refreshRate);
+  }
+
+  public ngOnDestroy() {
+    clearInterval(this.updatingTimer);
+    delete this.chartInstance;
+    delete this.stats;
   }
 
   private updateSeries(series) {

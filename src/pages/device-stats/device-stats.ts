@@ -53,8 +53,6 @@ export class DeviceStatsPage implements OnInit {
 
     let { cpu, ram, disk, net } = this.device.stats;
 
-    console.log(this.device.stats);
-
     this.tasks = {
       summary: [
         cpu.entries.length,
@@ -67,6 +65,12 @@ export class DeviceStatsPage implements OnInit {
       disk: disk.entries.length - 1,
       net: net.entries.length - 1
     }
+  }
+
+  ionViewDidLeave() {
+    console.log('DeviceStatsPage leaved')
+    this.tasks = null;
+    this.device = null;
   }
 
 }
