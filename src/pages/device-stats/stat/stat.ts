@@ -24,47 +24,59 @@ export class StatComponent implements OnInit {
   constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
   public ngOnInit() {
-    this.chartDataField = 'cpu';
     this.statLabels = Object.keys(this.stats.entries.pop());
     this.detailedView = 'off';
     this.chartOptions = {
-      title: {
-        text: 'Test chart'
+      chart: {
+        type: 'spline'
       },
-      series: this.stats.entries.map(entry => {
-
-        return {
-          pid: entry.pid,
-          name: entry.image,
-          data: [ entry[this.chartDataField] ]
+      title: {
+        text: this.chartDataField.toUpperCase()
+      },
+      xAxis: {
+        type: 'datetime',
+        tickPixelInterval: 150
+      },
+      plotOptions: {
+        spline: {
+          marker: {
+            enabled: false
+          }
         }
-      })
+      },
+      series: this.stats.entries.map(entry => ({
+        name: entry.pid,
+        data: [
+          {
+            x: new Date().getTime(),
+            y: entry[this.chartDataField]
+          }
+        ]
+      }))
     }
 
-    this.series = this.stats.entries.map(entry => ({
-      pid: entry.pid,
-      name: entry.image,
-      data: [ entry[this.chartDataField] ]
-    }));
-
-    setInterval(() => console.log(this.updateChart()), refreshRate * 2);
+    setInterval(
+      () => this.updateSeries(this.chartInstance.series),
+      refreshRate);
   }
 
-  private updateChart() {
-    return Array.from(this.series)
+  private updateSeries(series) {
+    Array
+      .from(series)
       .map((series: any) => {
         const changes = this.stats.entries
-          .find(entry => entry.pid === series.pid);
+          .find(entry => entry.pid === series.name);
+        const x = new Date().getTime();
+        const y = changes[this.chartDataField];
 
-        if (series.data.length == 10) {
-          series.data.shift();
-        }
+        series.data.length == 10
+          ? series.addPoint([ x, y ], false, true)
+          : series.addPoint([ x, y ]);
 
-        console.log(series.data.length);
-
-        series.data.push(changes[this.chartDataField]);
         return series;
-      })
+      });
+
+    this.chartInstance.redraw();
   }
 
   public bindChartInstance(instance) {
