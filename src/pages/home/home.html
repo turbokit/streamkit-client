@@ -10,7 +10,7 @@
   <ion-card
     *ngFor="let device of devices | async"
     [navPush]="deviceStatsPage"
-    [navParams]="{ device }">
+    [navParams]="{ device: device }">
     <ion-card-content>
       <h2 ion-text color="light">Device: <span ion-text color="red">{{ device.id }}</span></h2>
       <p ion-text color="light">Task Group: <span ion-text color="red">{{ device.taskGroup }}</span></p>
