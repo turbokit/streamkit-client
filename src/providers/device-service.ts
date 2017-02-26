@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import * as io from 'socket.io-client';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Device } from './device.model';
 
@@ -16,7 +15,7 @@ function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-export const refreshRate = 1000;
+export const refreshRate = 700;
 
 @Injectable()
 export class DeviceService {
