@@ -14,7 +14,7 @@ export class MyApp {
     platform
       .ready()
       .then(() => {
-        StatusBar.backgroundColorByHexString('#387ef5');
+        StatusBar.backgroundColorByHexString('#f53d3d');
         Splashscreen.hide();
       });
   }
