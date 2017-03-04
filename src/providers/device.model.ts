@@ -42,6 +42,7 @@ export interface RAMStat {
   entries: Array<RAMStatEntry>;
 }
 export interface NetStat {
+  total: number;
   entries: Array<NetStatEntry>;
 }
 export interface DiskStat {
