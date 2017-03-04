@@ -6,6 +6,7 @@ import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DeviceStatsPage, DeviceStatsComponents } from '../pages/device-stats/device-stats';
+import { StatisticPage, StatisticComponents } from '../pages/statistic/statistic';
 
 import { DeviceService } from '../providers/device-service';
 
@@ -31,6 +32,8 @@ export const IonicErrorHandlerProvider = {
     HomePage,
     DeviceStatsPage,
     DeviceStatsComponents,
+    StatisticPage,
+    StatisticComponents,
     TitleCasePipe
   ],
   imports: [
@@ -44,7 +47,9 @@ export const IonicErrorHandlerProvider = {
     MyApp,
     HomePage,
     DeviceStatsPage,
-    DeviceStatsComponents
+    DeviceStatsComponents,
+    StatisticPage,
+    StatisticComponents
   ],
   providers: [
     DeviceService,

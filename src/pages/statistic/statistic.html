@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Statistic</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab
+      *ngFor="let stat of statTabs"
+      [root]="stat.root"
+      [rootParams]="stat.data"
+      [tabIcon]="stat.icon"
+      [tabTitle]="stat.title">
+    </ion-tab>
+  </ion-tabs>
+</ion-content>
