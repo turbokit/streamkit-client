@@ -7,6 +7,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DeviceStatsPage, DeviceStatsComponents } from '../pages/device-stats/device-stats';
 import { StatisticPage, StatisticComponents } from '../pages/statistic/statistic';
+import { SplineChartComponent } from '../pages/spline-chart/spline-chart';
 
 import { DeviceService } from '../providers/device-service';
 
@@ -34,6 +35,7 @@ export const IonicErrorHandlerProvider = {
     DeviceStatsComponents,
     StatisticPage,
     StatisticComponents,
+    SplineChartComponent,
     TitleCasePipe
   ],
   imports: [
@@ -49,7 +51,8 @@ export const IonicErrorHandlerProvider = {
     DeviceStatsPage,
     DeviceStatsComponents,
     StatisticPage,
-    StatisticComponents
+    StatisticComponents,
+    SplineChartComponent
   ],
   providers: [
     DeviceService,
