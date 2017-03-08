@@ -1,22 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs';
 
-/*
-  Generated class for the Cpu page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-cpu',
   templateUrl: 'cpu.html'
 })
-export class CpuPage {
+export class CpuPage implements OnInit {
+  public dataStream: Observable<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CpuPage');
+  ngOnInit() {
+    this.dataStream = this.navParams.get('dataStream');
   }
 
 }

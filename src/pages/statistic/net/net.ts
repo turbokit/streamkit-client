@@ -1,22 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs';
 
-/*
-  Generated class for the Net page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-net',
   templateUrl: 'net.html'
 })
-export class NetPage {
+export class NetPage implements OnInit {
+  public dataStream: Observable<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NetPage');
+  ngOnInit() {
+    this.dataStream = this.navParams.get('dataStream');
   }
-
 }
