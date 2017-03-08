@@ -76,7 +76,13 @@ export class DeviceService {
       }))
   }
 
-  public getStat(statKey: string, loadKey: string) {
+  /**
+   * @description map devices by stat
+   * @param {string} statKey one of device stat params
+   * @param {string} loadKey property to pick stat value
+   * @example deviceService.getState('cpu', 'load');
+   */
+  public getStat(statKey: string, loadKey: string): Observable<Array<Device>> {
     return this.getDevices()
       .map(devices => devices.map(({ id, load, stats, taskGroup }: Device) => ({
         id, load, taskGroup,
