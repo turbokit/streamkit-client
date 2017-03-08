@@ -8,8 +8,7 @@ Try it out now!
 
 ```bash
 $ git clone https://github.com/embarq/streamkit-client.git
-$ npm install
-$ ionic platform add android
+$ bash ./prepare.sh
 ```
 
 - Run!
