@@ -80,12 +80,12 @@ export class DeviceService {
    * @description map devices by stat
    * @param {string} statKey one of device stat params
    * @param {string} loadKey property to pick stat value
-   * @example deviceService.getState('cpu', 'load');
+   * @example deviceService.getStat('cpu', 'load');
    */
   public getStat(statKey: string, loadKey: string): Observable<Array<Device>> {
     return this.getDevices()
       .map(devices => devices.map(({ id, load, stats, taskGroup }: Device) => ({
-        id, load, taskGroup,
+        id, taskGroup,
         statLoad: stats[statKey][loadKey]
       })));
   }
