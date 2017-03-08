@@ -49,8 +49,26 @@ export class StatisticPage implements OnInit {
       {
         root: CpuPage,
         stream: this.deviceService.getStat('cpu', 'load'),
-        icon: '',
+        icon: 'clock',
         title: 'CPU'
+      },
+      {
+        root: RamPage,
+        stream: this.deviceService.getStat('ram', 'total'),
+        icon: 'cog',
+        title: 'RAM'
+      },
+      {
+        root: DiskPage,
+        stream: this.deviceService.getStat('disk', 'averageSpeed'),
+        icon: 'disc',
+        title: 'Disk'
+      },
+      {
+        root: NetPage,
+        stream: this.deviceService.getStat('net', 'total'),
+        icon: 'globe',
+        title: 'Network'
       }
     ]
   }
